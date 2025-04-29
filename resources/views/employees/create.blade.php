@@ -1,6 +1,6 @@
 <x-layouts.app.sidebar>
-    <div class="py-6 pl-6 pr-6 lg:ml-0">
-        <div class="mx-auto">
+    <div class="py-6 px-6 lg:ml-64">
+        <div class="max-w-7xl mx-auto">
             <div class="bg-zinc-900 overflow-hidden shadow-sm sm:rounded-lg p-6">
                 <div class="flex justify-between items-center mb-6">
                     <h1 class="text-2xl font-semibold text-white">Add New Employee</h1>

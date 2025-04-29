@@ -13,7 +13,18 @@ class EmployeeController extends Controller
     public function index()
     {
         $employees = Employee::all();
-        return view('employees.index', compact('employees'));
+
+        // Get counts by gender
+        $maleCount = Employee::where('gender', 'Male')->count();
+        $femaleCount = Employee::where('gender', 'Female')->count();
+        
+        // Calculate average age
+        $averageAge = Employee::selectRaw('AVG(TIMESTAMPDIFF(YEAR, birthday, CURDATE())) as avg_age')->value('avg_age') ?? 0;
+        
+        // Get total monthly salary
+        $totalSalary = Employee::sum('monthly_salary');
+
+        return view('employees.index', compact('employees', 'maleCount', 'femaleCount', 'averageAge', 'totalSalary'));
     }
 
     /**
@@ -87,5 +98,23 @@ class EmployeeController extends Controller
 
         return redirect()->route('employees.index')
             ->with('success', 'Employee deleted successfully.');
+    }
+
+    /**
+     * Display a summary of employees.
+     */
+    public function summary()
+    {
+        // Get counts by gender
+        $maleCount = Employee::where('gender', 'Male')->count();
+        $femaleCount = Employee::where('gender', 'Female')->count();
+        
+        // Calculate average age
+        $averageAge = Employee::selectRaw('AVG(TIMESTAMPDIFF(YEAR, birthday, CURDATE())) as avg_age')->value('avg_age') ?? 0;
+        
+        // Get total monthly salary
+        $totalSalary = Employee::sum('monthly_salary');
+    
+        return view('employees.summary', compact('maleCount', 'femaleCount', 'averageAge', 'totalSalary'));
     }
 }

@@ -21,6 +21,11 @@ Route::middleware(['auth'])->group(function () {
 
     // Employee routes
     Route::resource('employees', EmployeeController::class);
+
+    // Summary routes
+    Route::get('/employees/summary', [EmployeeController::class, 'summary'])->name('employees.summary');
+
+    
 });
 
 require __DIR__.'/auth.php';
