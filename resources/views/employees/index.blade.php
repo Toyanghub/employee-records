@@ -1,5 +1,5 @@
-<x-layouts.app.sidebar>
-    <div class="py-6 px-6 lg:ml-64">
+ <x-layouts.app.sidebar>
+    <div class="py-6 px-6 lg:pl-64"> <!-- Changed lg:ml-64 to lg:pl-64 to respect the sidebar -->
         <div class="max-w-7xl mx-auto">
             <div class="bg-zinc-900 overflow-hidden shadow-sm sm:rounded-lg p-6">
                 <div class="flex justify-between items-center mb-6">
@@ -19,26 +19,26 @@
                     <table class="w-full text-sm text-left text-gray-300">
                         <thead class="text-xs text-white uppercase bg-zinc-700">
                             <tr>
-                                <th scope="col" class="py-3 px-6">ID</th>
-                                <th scope="col" class="py-3 px-6">Name</th>
-                                <th scope="col" class="py-3 px-6">Gender</th>
-                                <th scope="col" class="py-3 px-6">Birthday</th>
-                                <th scope="col" class="py-3 px-6">Monthly Salary</th>
+                                <th scope="col" class="py-3 px-6 text-center">ID</th>
+                                <th scope="col" class="py-3 px-6 text-center">Name</th>
+                                <th scope="col" class="py-3 px-6 text-center">Gender</th>
+                                <th scope="col" class="py-3 px-6 text-center">Birthday</th>
+                                <th scope="col" class="py-3 px-6 text-center">Monthly Salary</th>
                                 <th scope="col" class="py-3 px-6 text-center">Actions</th>
                             </tr>
                         </thead>
                         <tbody>
                             @forelse($employees as $employee)
                                 <tr class="border-b border-zinc-700 hover:bg-zinc-700">
-                                    <td class="py-4 px-6">{{ $employee->id }}</td>
-                                    <td class="py-4 px-6 font-medium text-white whitespace-nowrap">
+                                    <td class="py-4 px-6 text-center">{{ $employee->id }}</td>
+                                    <td class="py-4 px-6 text-center font-medium text-white whitespace-nowrap">
                                         {{ $employee->first_name }} {{ $employee->last_name }}
                                     </td>
-                                    <td class="py-4 px-6">{{ $employee->gender }}</td>
-                                    <td class="py-4 px-6">
+                                    <td class="py-4 px-6 text-center">{{ $employee->gender }}</td>
+                                    <td class="py-4 px-6 text-center">
                                         {{ $employee->birthday instanceof \Carbon\Carbon ? $employee->birthday->format('M d, Y') : $employee->birthday }}
                                     </td>
-                                    <td class="py-4 px-6">₱{{ number_format($employee->monthly_salary, 2) }}</td>
+                                    <td class="py-4 px-6 text-center">₱{{ number_format($employee->monthly_salary, 2) }}</td>
                                     <td class="py-4 px-6 text-center">
                                         <div class="flex justify-center space-x-3">
                                             <a href="{{ route('employees.show', $employee->id) }}" class="font-medium text-blue-400 hover:underline">
