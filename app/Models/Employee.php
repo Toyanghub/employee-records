@@ -18,10 +18,12 @@ class Employee extends Model
     ];
 
     // Optional: If you want to automatically cast the birthday to a Carbon instance
-    protected $dates = ['birthday'];
+    // protected $dates = ['birthday'];
+    
 
     // Optional: If you want to cast the monthly_salary to decimal type
     protected $casts = [
         'monthly_salary' => 'decimal:2',
+        'birthday' => 'date',
     ];
 }

@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
+use App\Http\Controllers\EmployeeController;  // Add this line
 
 Route::get('/', function () {
     return view('welcome');
